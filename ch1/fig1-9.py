@@ -4,7 +4,7 @@ reviewed in Rinzel (1990) Bulletin of Mathematical Biology 52 pp. 5-23.
 Figure 1.9 and problem 8.6.4
 """
 
-
+#%%
 import numpy as np
 from scipy.integrate import odeint
 import matplotlib.pyplot as plt
@@ -31,7 +31,7 @@ def hh_rhs(y, t, iStim):
     hAlfa = 0.07 * exp(-(v+60)/20)
     hBeta = 1 / (exp(-(v+30)/10) + 1)
     dhdt  = -(hAlfa + hBeta) * h + hAlfa
-    iNa = G_N_BAR * (v-E_N) * (m**3) * h
+    iNa = G_N_BAR * (v - E_N) * (m**3) * h
 
     nAlfaV = -0.1 * (v+50)
     nAlfa = 0.1 * nAlfaV / expm1(nAlfaV)
@@ -62,4 +62,3 @@ solution = odeint(hh_rhs, y0, t, args=(get_iStim, ))
 plt.plot(t, solution[:, 0], 'k-', linewidth=2)
 plt.xlabel("Time (ms)")
 plt.ylabel("Membrane voltage (mV)")
-plt.axis([tStart, tEnd, -80, 50])
