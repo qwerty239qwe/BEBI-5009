@@ -4,7 +4,7 @@ from Gardiner et al. (2000) Nature 403, pp. 339-342
 Figures 1.7, 7.13, 7.14, 7.15
 """
 
-
+#%%
 import numpy as np
 from scipy.integrate import odeint
 import matplotlib.pyplot as plt

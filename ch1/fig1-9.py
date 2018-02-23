@@ -54,7 +54,7 @@ def get_iStim(t):
     if 20 < t <= 21:
         return -6.65
     elif 60 < t <= 61:
-        return -6.87
+        return -6.86
     else:
         return 0
 
@@ -62,3 +62,4 @@ solution = odeint(hh_rhs, y0, t, args=(get_iStim, ))
 plt.plot(t, solution[:, 0], 'k-', linewidth=2)
 plt.xlabel("Time (ms)")
 plt.ylabel("Membrane voltage (mV)")
+plt.show()
