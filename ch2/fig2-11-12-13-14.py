@@ -3,6 +3,7 @@ Figure 2.11 (Fig 1) & Figure 2.12 (Fig 2)
 Simulation and rapid equilibrium approximation
 As well as figure 2.13 Rapid equilibrium approximation
 """
+#%%
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.integrate import odeint
@@ -34,6 +35,7 @@ args = (k0, k1, km1, k2) = (0, 9, 12, 2)
 y0 = [0, 10]
 y = odeint(original_rhs, y0, t, args)
 plt.figure(1)
+plt.title('Reference Plot')
 plt.plot(t, y[:, 0], 'k-', linewidth=3, label='a')
 plt.plot(t, y[:, 1], 'k--', linewidth=3, label='b')
 plt.xlabel('Time (arbitrary units)')
@@ -44,6 +46,7 @@ plt.legend(loc='best')
 y0 = 10
 yApprox = odeint(approx_rhs, y0, t, args)
 plt.figure(2)
+plt.title('Ref vs Fast equlibrium')
 plt.plot(t, y[:, 0], 'k-', linewidth=2, label='a (original)')
 plt.plot(t, y[:, 1], 'k--', linewidth=2, label='b (original)')
 (aApprox, bApprox) = (km1 / (km1 + k1) * yApprox, k1 / (km1 + k1) * yApprox)
@@ -58,6 +61,7 @@ args = (k0, k1, km1, k2) = (9, 20, 12, 2)
 y = odeint(original_rhs, [8, 4], t, args)
 yApprox = odeint(approx_rhs, 12, t, args)
 plt.figure(3)
+plt.title('Ref vs Fast equlibrium')
 plt.plot(t, y[:, 0], 'k-', linewidth=2, label='a (original)')
 plt.plot(t, y[:, 1], 'k--', linewidth=2, label='b (original)')
 (aApprox, bApprox) = (km1 / (km1 + k1) * yApprox, k1 / (km1 + k1) * yApprox)
@@ -77,6 +81,7 @@ bApprox = odeint(qssa_rhs, 235/32, t, args)
 aApprox = (k0 + km1 * bApprox) / k1
 
 plt.figure(4)
+plt.title('Ref vs QSSA')
 plt.plot(t, y[:, 0], 'k-', linewidth=2, label='a (original)')
 plt.plot(t, y[:, 1], 'k--', linewidth=2, label='b (original)')
 plt.plot(t, aApprox, 'r-', linewidth=2, label='a (reduced)')
