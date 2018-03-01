@@ -1,5 +1,6 @@
 """Figure 2.7 Numerical Simulation by Euler's Method"""
 
+#%%
 
 import math
 import numpy as np
