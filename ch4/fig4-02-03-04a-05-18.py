@@ -87,3 +87,20 @@ ns21 = np.linspace(0, 2, 100)
 ns22 = (k2 + k5 * ns21) / k4
 plt.plot(ns11, ns12, 'k--', ns21, ns22, 'k:', linewidth=2)
 
+# Figure 4.5B
+plt.figure()
+plt.axis([0, 2, 0, 2])
+plt.xlabel(r'Concentration of $S_1$')
+plt.ylabel(r'Concentration of $S_2$')
+plt.quiver(xx, yy, xdot, ydot, np.hypot(xdot, ydot))
+plt.plot(ns11, ns12, 'k--', ns21, ns22, 'k:', linewidth=2)
+
+# Figure 4.18
+# Run N simulations to steady state for different values of k_1
+sols = [solve_ivp(lambda t, y: rhs(t, y, k1, k2, k3, k4, k5, n),
+                (0, 100), [0, 0]) for k1 in range(40)]
+s1s = [sol.y[0, -1] for sol in sols]
+plt.figure()
+plt.plot(np.arange(40), s1s)
+plt.xlabel(r'$k_1$')
+plt.ylabel(r'Steady state $S_1$ concentration')
