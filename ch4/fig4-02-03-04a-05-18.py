@@ -68,7 +68,7 @@ plt.ylabel(r'Concentration of $S_2$')
 for sol, color in zip(sols, 'rgbyk'):
     plt.plot(sol.y[0], sol.y[1], color, linewidth=3)
 
-xx, yy = np.mgrid[0:2:20j, 0:2:20j]
+yy, xx = np.mgrid[0:2:20j, 0:2:20j]
 xdot = k1/(1+yy**n) - k3*xx - k5*xx
 ydot = k2 - k4*yy + k5*xx
 plt.quiver(xx, yy, xdot, ydot, np.hypot(xdot, ydot))
